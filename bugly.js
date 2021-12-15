@@ -213,16 +213,16 @@ const flag = false;
       browser.close();
     }
   
-    await page.evaluate(() => {
+    await page.evaluate((qq) => {
       const iWindow = document.getElementById('ptlogin_iframe').contentWindow;
       const doc = iWindow.document;
       doc.querySelector('#switcher_plogin').click()
       
-      doc.querySelector('#u').value = appConfig.qq.user;
-      doc.querySelector('#p').value = appConfig.qq.user;
+      doc.querySelector('#u').value = qq.user;
+      doc.querySelector('#p').value = qq.password;
   
       doc.querySelector('#login_button').click();
-    });
+    }, appConfig.qq);
 
     console.log('[LOGIN]', 'Success')
   })
